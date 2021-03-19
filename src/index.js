@@ -3,7 +3,9 @@ const { set } = require('mongoose')
 require('./db/mongoose')
 const Note = require('./models/note')
 const cors = require('cors');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const { ObjectID } = require('bson');
+const { ObjectId } = require('bson');
 
 const app = express()
 const port = 5000
@@ -54,10 +56,12 @@ app.post('/delete-note', (req, res) => {
 
 app.post('/update-note', (req,res) => {
     Note.updateMany({
-        title: req.body['title'],
+        //title: req.body['title'],
         // name: req.body['name']
+        _id: ObjectId(req.body['_id'])
     },
     {
+        title: req.body['title'],
         description: req.body['description']
     }
     ).then((datas) => {
