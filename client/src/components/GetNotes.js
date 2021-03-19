@@ -41,14 +41,14 @@ function GetNotes() {
 
   useEffect(() => {
     axios
-      .get("localhost:5000/get-notes")
+      .get("http://localhost:5000/get-notes")
       .then((res) => {
         setNotes(res.data);
       })
       .catch((err) => {
         console.log("Error Loading the Notes");
       });
-  });
+  },[]);
 
   return (
     <>
@@ -59,21 +59,20 @@ function GetNotes() {
 
       
         {/* array of JSX items */}
-
-        {/* {notes.map(note => (
-        <>
-          <h4>note.title</h4>
-          <h4>note.description</h4>
-        </>
+        
+        {notes.map(note => (
+        <div>
+          <h4>{note.title}</h4>
+          <h4>{note.description}</h4>
+          <UpdateNote propopen={open} propclose={closeDialog} noteTitle={note.title} noteDesc={note.description} />
+        </div>
       ))
-      } */}
+      }
       
 
       <div>
         <button onClick={handleClickOpen}>Edit</button>
-        <UpdateNote propopen={open} propclose={closeDialog}
-        //  noteTitle={note.title} noteDesc={note.description}
-         />
+        
         {/* <DeleteNote noteTitle={note.title}/> */}
         {/* <Dialog
         open={open}

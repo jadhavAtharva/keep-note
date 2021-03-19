@@ -64,7 +64,7 @@ function DeleteNote({noteTitle}){
     
     //axios post
     axios
-      .post('localhost:5000/delete-note', data)
+      .post('http://localhost:5000/delete-note', data)
       .then(res => {
         // this.props.history.push('/');
         // setOpen(false);

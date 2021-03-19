@@ -55,7 +55,7 @@ function UpdateNote({propopen, propclose, noteTitle, noteDesc}){
     
     //axios post
     axios
-      .post('localhost:5000/update-note', data)
+      .post('http://localhost:5000/update-note', data)
       .then(res => {
         // this.props.history.push('/');
         // setOpen(false);
