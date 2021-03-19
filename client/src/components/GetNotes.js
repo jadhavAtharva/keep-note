@@ -35,12 +35,8 @@ function GetNotes() {
   //   setAnchorEl(null);
   // };
 
-  const closeDialog = () => {
-    setOpen(null);
-  };
-
-  useEffect(() => {
-    axios
+  const fetchNote = async () => {
+    await axios
       .get("http://localhost:5000/get-notes")
       .then((res) => {
         setNotes(res.data);
@@ -48,22 +44,38 @@ function GetNotes() {
       .catch((err) => {
         console.log("Error Loading the Notes");
       });
+  }
+
+  const closeDialog = () => {
+    setOpen(null);
+    fetchNote()
+  };
+
+  useEffect(() => {
+    
+    fetchNote()
+    
   },[]);
+
+  useEffect(() =>{
+    console.log(notes) 
+  },[notes])
 
   return (
     <>
       <h1>All Notes</h1>
 
       {/* checking */}
-      {console.log(notes)}
+      {/* {console.log(notes)} */}
 
       
         {/* array of JSX items */}
         
         {notes.map(note => (
-        <div>
+        <div key={note.id}>
           <h4>{note.title}</h4>
           <h4>{note.description}</h4>
+          <button onClick={handleClickOpen}>Edit</button>
           <UpdateNote propopen={open} propclose={closeDialog} noteTitle={note.title} noteDesc={note.description} />
         </div>
       ))
@@ -71,7 +83,7 @@ function GetNotes() {
       
 
       <div>
-        <button onClick={handleClickOpen}>Edit</button>
+        
         
         {/* <DeleteNote noteTitle={note.title}/> */}
         {/* <Dialog

@@ -69,7 +69,7 @@ function UpdateNote({propopen, propclose, noteTitle, noteDesc}){
 
   return(
     <>
-      <h1>Update</h1>
+      
 
       <Dialog
         open={propopen}
