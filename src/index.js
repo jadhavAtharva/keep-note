@@ -4,7 +4,7 @@ require('./db/mongoose')
 const Note = require('./models/note')
 
 const app = express()
-const port = 3000
+const port = 5000
 
 app.use(express.json())
 
@@ -18,15 +18,15 @@ app.post('/add_note', (req, res) => {
     })
 })
 
-app.post('/get-note', (req, res) => {
-    Note.find({
-        name: req.body['name']
-    }).then((notes) => {
-        res.status(200).send(notes)
-    }).catch((e) => {
-        res.status(400).send(e)
-    })
-})
+// app.post('/get-note', (req, res) => {
+//     Note.find({
+//         name: req.body['name']
+//     }).then((notes) => {
+//         res.status(200).send(notes)
+//     }).catch((e) => {
+//         res.status(400).send(e)
+//     })
+// })
 
 app.get('/get-notes', (req, res) => {
     Note.find({}).then((notes) =>{
@@ -39,7 +39,7 @@ app.get('/get-notes', (req, res) => {
 app.post('/delete-note', (req, res) => {
     Note.deleteOne({
         title: req.body['title'],
-        name: req.body['name']
+        // name: req.body['name']
     }).then(() => {
         res.status(200).send('Note Deleted Successfully')
     }).catch((e) => {
@@ -50,7 +50,7 @@ app.post('/delete-note', (req, res) => {
 app.post('/update-note', (req,res) => {
     Note.updateMany({
         title: req.body['title'],
-        name: req.body['name']
+        // name: req.body['name']
     },
     {
         description: req.body['description']
