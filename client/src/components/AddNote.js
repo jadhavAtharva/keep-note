@@ -24,7 +24,7 @@ function AddNote(){
 
     //axios post
     axios
-      .post('localhost:5000/add_note', data)
+      .post('http://localhost:5000/add_note', data)
       .then(res => {
         setTitle("");
         setDescription("");

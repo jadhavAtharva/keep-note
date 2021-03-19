@@ -15,3 +15,6 @@ MongoClient.connect(connectionURL, {useUnifiedTopology: true},  (error, client) 
     const db = client.db(databaseName)
 
 })
+
+
+// /Users/admin/mongodb/bin/mongod.exe --dbpath=/Users/admin/mongodb-data
