@@ -9,7 +9,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-import Masonry from "react-masonry-css";
 
 import UpdateNote from "./UpdateNote";
 import DeleteNote from './DeleteNote'
@@ -58,11 +57,7 @@ function GetNotes() {
       {/* checking */}
       {console.log(notes)}
 
-      <Masonry
-        breakpointCols={3}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
+      
         {/* array of JSX items */}
 
         {/* {notes.map(note => (
@@ -72,7 +67,7 @@ function GetNotes() {
         </>
       ))
       } */}
-      </Masonry>
+      
 
       <div>
         <button onClick={handleClickOpen}>Edit</button>
