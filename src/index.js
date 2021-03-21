@@ -15,7 +15,6 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 app.use(cors())
 
-
 app.post('/add_note', (req, res) => {
     const note = new Note(req.body)
     note.save().then(() =>{
@@ -72,7 +71,7 @@ app.post('/update-note', (req,res) => {
             res.status(400).send("Note not found")
         }
     }).catch((error) => {
-        res.status(400).send(e)
+        res.status(400).send(error)
     })
 })
 
